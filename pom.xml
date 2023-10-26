@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>behzad</groupId>
 	<artifactId>aws_ip_filter</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.1</version>
 	<name>aws_ip_filter</name>
 	<description>aws_ip_filter</description>
 	<properties>
