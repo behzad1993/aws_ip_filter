@@ -1,10 +1,10 @@
 package behzad.aws_ip_filter.service;
 
+import behzad.aws_ip_filter.Exceptions.ServerNotReachableException;
 import behzad.aws_ip_filter.Region;
 import behzad.aws_ip_filter.repository.IpRepository;
 import org.springframework.stereotype.Service;
 
-import java.io.IOException;
 import java.net.URISyntaxException;
 import java.util.Set;
 
@@ -17,7 +17,7 @@ public class IpService {
         this.ipRepository = ipRepository;
     }
 
-    public String getFilteredIpsAsString(Region region) throws URISyntaxException, IOException {
+    public String getFilteredIpsAsString(Region region) throws URISyntaxException, ServerNotReachableException {
         Set<String> ipsFilteredByRegion = ipRepository.getIpsFilteredByRegion(region);
         return ipRepository.formatSetToString(ipsFilteredByRegion);
     }
