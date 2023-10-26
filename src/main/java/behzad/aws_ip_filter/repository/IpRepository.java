@@ -9,8 +9,10 @@ import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.URL;
-import java.util.HashSet;
 import java.util.Iterator;
+import java.util.Set;
+import java.util.TreeSet;
+import java.util.stream.Collectors;
 
 @Repository
 public class IpRepository {
@@ -24,9 +26,9 @@ public class IpRepository {
         return jsonNode.get("prefixes");
     }
 
-    public HashSet<String> getIpsFilteredByRegion(Region regionToFilter) throws URISyntaxException, IOException {
+    public Set<String> getIpsFilteredByRegion(Region regionToFilter) throws URISyntaxException, IOException {
         Iterator<JsonNode> elements = receiveIpsFromAWS().elements();
-        HashSet<String> ipSet = new HashSet<>();
+        Set<String> ipSet = new TreeSet<>();
 
         while (elements.hasNext()) {
             JsonNode value = elements.next();
@@ -37,5 +39,9 @@ public class IpRepository {
             }
         }
         return ipSet;
+    }
+
+    public String formatSetToString(Set<String> ipSet) {
+        return ipSet.stream().map(String::toString).collect(Collectors.joining(",\n"));
     }
 }

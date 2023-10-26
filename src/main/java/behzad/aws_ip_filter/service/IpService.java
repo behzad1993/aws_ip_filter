@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service;
 
 import java.io.IOException;
 import java.net.URISyntaxException;
-import java.util.HashSet;
+import java.util.Set;
 
 @Service
 public class IpService {
@@ -17,7 +17,8 @@ public class IpService {
         this.ipRepository = ipRepository;
     }
 
-    public HashSet<String> getFilteredIps(Region region) throws URISyntaxException, IOException {
-        return ipRepository.getIpsFilteredByRegion(region);
+    public String getFilteredIpsAsString(Region region) throws URISyntaxException, IOException {
+        Set<String> ipsFilteredByRegion = ipRepository.getIpsFilteredByRegion(region);
+        return ipRepository.formatSetToString(ipsFilteredByRegion);
     }
 }
