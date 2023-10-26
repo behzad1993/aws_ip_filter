@@ -1,4 +1,4 @@
-FROM openjdk:21
+FROM openjdk:17
 LABEL authors="behzadkarimi"
 
 ARG JAR_FILE=target/*.jar

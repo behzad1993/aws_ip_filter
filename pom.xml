@@ -14,7 +14,7 @@
 	<name>aws_ip_filter</name>
 	<description>aws_ip_filter</description>
 	<properties>
-		<java.version>21</java.version>
+		<java.version>17</java.version>
 	</properties>
 	<dependencies>
 
